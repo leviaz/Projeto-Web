@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Museu nacional </title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+
+</head>
+
+
+<body>
+	<div id="container">
+		
+		<header>
+			<h1> <img src="logo.png"></h1>
+
+			<nav>
+				<a href=""> HOME </a>
+				<a href=""> EXPOSIÇÕES </a>
+				<a href=""> PESQUISA </a>
+				<a href=""> ACERVO </a>
+				<a href=""> VÍDEOS </a>
+				<a href=""> FOTOS </a>
+				<a href=""> CONTATO </a>
+			</nav>
+
+		</header>
+
+		<article id="conteudo-principal">
+			<section id="principal">
+				<img src="museu.png" >
+
+
+			</section>
+
+			<section id="lateral">
+				<img src="depoimento.png">
+			</section>
+		</article>
+
+		<article id="conteudo-secundario">
+			<section id="video">
+				<h3> VÍDEO: CONHEÇA O MUSEU</h3>
+				<iframe src="https://www.youtube.com/embed/RGUYb-hivrc" width="90%" height="200"> video</iframe>
+
+			</section>
+
+			<section id="mapa">
+				<h3> MAPA: ENCONTRE O MUSEU</h3>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.2063112591054!2d-43.2265289!3d-22.90576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997e58a085b7af%3A0x4d11e9a933d38ce3!2sMuseu%20Nacional%20-%20UFRJ!5e0!3m2!1spt-BR!2sbr!4v1677865798393!5m2!1spt-BR!2sbr" width="90%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</section>
+
+
+			<section id="agendamentos">
+				<h3> FAÇA UMA VISITA </h3>
+				<form>
+					<label for="dia"> Data:</label>
+					<input type="date" name="dia" id="dia">
+					<label for="pessoas">Qtd pessoas:</label>
+					<input type="number" name="pessoas" id="pessoas" min="1" max="20">
+					<input type="submit" value="Verificar disponibilidade" id="botao">
+				</form>
+			</section>
+		</article>
+
+	</div>
+
+
+
+</body>
+
+
+
+</html>

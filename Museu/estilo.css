@@ -1,0 +1,118 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+	background: #fff /*url(fundo-foto.png)*/;
+
+}
+
+header {
+	background: #1a1a1a url(fundo.png);
+	height: 200px;
+	color:#fff ;
+	min-width: 1100px;
+
+}
+
+header h1 {
+	padding: 20px;
+	margin-left: 90px;
+}
+
+nav {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	margin-top:-60px;
+	margin-right: 150px;
+	
+}
+
+nav a{
+	text-decoration: none;
+	color: #cc7a00;
+	padding: 10px;
+	font-size: 0.8em;
+
+}
+
+#conteudo-principal {
+	display: flex;
+	flex-shrink: 2;
+}
+
+
+#principal {
+	margin-left: 110px;
+	margin-top: -110px;
+	
+
+}
+
+
+#lateral {
+	margin-left: 30px;
+	margin-top: -110px; 
+}
+
+#conteudo-secundario{
+	min-width: 900px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: space-around;
+}
+
+#video {
+	margin-left: 140px;
+	width: 28%;
+}
+
+#conteudo-secundario h3 {
+	padding: 10px;
+	font-size: 0.8em;
+	color: green;
+}
+
+
+#mapa {
+	width: 25%;
+}
+
+
+form {
+	margin-left: 30px;
+
+}
+
+#pessoas {
+	width: 10%;
+}
+
+#agendamentos h3 {
+	color: 	#a64a2b;
+	margin-top: 40px;
+	font-size: 1.2em;
+}
+
+#agendamentos {
+	width: 25%;
+	background: #d2a679;
+	height: 200px;
+}
+
+#botao {
+	margin-top: 20px;
+	width: 80%;
+	margin-left: 7%;
+	color: #fff;
+	background: #996633;
+	border:none;
+	cursor: pointer;
+	height: 30px;
+}
+
