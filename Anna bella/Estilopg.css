@@ -1,0 +1,46 @@
+.titulo {
+	color: gray;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	width: 900px;
+	background-color: white;
+	padding-top: 30px; /* Padding permite espaçar elementos de acordo com o parametro da direção */
+}
+.menu {
+	background-color: #D3D3D3;
+	width: 900px;
+	height: 70px;
+	padding: 25px;
+	box-sizing: border-box;
+	font-weight: bold;
+	color: darkblue; text-decoration: none;
+
+}
+.texto {
+	padding: 10px;
+	height: 350px; 
+	width: 900px;
+	text-align: justify;
+	justify-content: left;
+	background-color: white;
+	box-sizing: border-box;
+}
+
+.background {
+	background-image: url(fundo.png);
+	background-position: center bottom; 
+	background-attachment: fixed;
+	padding-top: 2px; /* Foi posicionado na div para que cubra toda a pg, foi colocado o espaçamento superior apenas para posicionar os elementos da pg */
+
+}
+
+
+.rodape {
+	text-align: center;
+	font-weight: bold;
+	box-sizing: border-box;
+	height: 70px;
+	padding-right:500px;
+	padding-top: 30px;
+}

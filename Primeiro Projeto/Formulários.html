@@ -1,0 +1,48 @@
+<!doctype html> 
+
+<html>
+
+	<head> 
+		<title> Página inicial </title> <!-- página padrão/inicial -->
+		<meta charset="utf-8"> 
+	</head>
+
+	<body>
+		<h2> Login </h2>
+		<form> <!-- PARAMETRO ACTION IRÁ DIRECIONAR O FORMULÁRIO -->
+			Login:<br>
+			<input type="text" name="login"> <br><!-- type define tipo de variável, name localiza a entrada para o backend -->
+			Senha: <br>
+			<input type="password" name="senha"> <br>
+
+			<input type="submit" value="Logar"><br> <!-- value define o texto a ser exibido no botão -->
+
+		</form>
+
+		<h2> Cadastre-se</h2>
+		<form>
+			Login:<br>
+			<input type="text" name="login"> <br> <br>
+			Sexo: <br>
+			<input type="radio" name="sexo" value="M">Masculino <br> <!-- radio define opções a serem selecionadas, ao utilizar o mesmo name, define-se uma variável (value) ao backend permitindo limitar uma marcação exclusiva, sendo assim value irá gravar um valor que define a variável permitindo recupera-la no backend -->
+			<input type="radio" name="sexo" value="F">Feminino <br> <br>
+			Interesses: <br> 
+			<input type="checkbox" name="interesses"> Futebol<br>
+			<input type="checkbox" name="interesses"> Cursos<br>
+			<input type="checkbox" name="interesses"> Moda<br> <br>
+
+			Estado: <br>
+			<select name="estado">
+				<option value="sp">SP</option>
+				<option value="mg">MG</option>
+				<option value="rj">RJ</option>
+				<option value="rs">RS</option>
+			</select> <br> <!-- select permite selecionar um item dentro de uma lista de itens, value passa o valor de entrada da variável ao backend -->
+
+			Observações: <br>
+			<textarea></textarea> <br> <!-- Área de texto -->
+
+			<input type="submit" value="cadastrar">
+		</form>
+	</body>
+</html>	
