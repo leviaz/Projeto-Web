@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="reset.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Inter:wght@600&display=swap" rel="stylesheet">
+        <title>Gerador de senhas</title>
+        
+    </head>
+    <body>
+        <main>
+            <section class="hero">
+                <h1 class="title"> Gerador de senha </h1>
+                <p class="subtitle"> Utilize o nosso gerador online para criar uma senha forte e segura </p>
+            </section>
+            
+            <section class="box">
+                <div class="password">
+                    <div class="text">
+                        <input type="text" name="password" id="password" value=""/>
+                    </div>
+                    <div class="actions">
+                        <button id="copy2"><img src="copy.svg" width="42"></button>
+                        <button id="renew"><img src="renew.svg" width="42"></button>
+                    </div>
+                    
+                </div>
+                <div class="security-indicator">
+                    <div id="security-indicator-bar" class="bar safe " style="width: 90%"></div>
+                </div>
+                
+            </section> 
+           
+            <section class="box customize">
+                <h3 class="title"> Personalizar</h3>
+                <div class="actions">
+                    <div class="password-length"> 
+                        <p>Tamanho: <span id="password-length-text">16</span></p>
+                        <input type="range" class="slider" name="passwordLength" min="4" max="64" id="passwordLength" value="16"/></div>
+                    <div class="config">
+                        <label class="checkbox-container">
+                            <span class="text"> Maiusculas</span>
+                            <input type="checkbox" id="uppercase-check" checked/>
+                            <span class="checkmark"></span>
+                        </label>
+                        
+
+                        <label class="checkbox-container">
+                            <span class="text"> Números</span>
+                            <input type="checkbox" id="number-check" checked/>
+                            <span class="checkmark"></span>
+                        </label>
+                        
+
+                        <label class="checkbox-container">
+                            <span class="text"> Simbolos</span>
+                            <input type="checkbox" id="symbol-check" checked/>
+                            <span class="checkmark"></span>
+                        </label>
+                       
+
+                    </div>
+                    </div>
+            </section>
+           <div class="submit">
+                <button id="copy">Copiar senha</button>
+           </div>
+            
+            
+        </main>
+        
+      
+       
+        <script>
+            const passwordField = document.querySelector("#password") //ao captar esse elemento evita um clique antes de que a senha seja gerada, evitando erro de declaração
+            const UppercaseCheck = document.querySelector("#uppercase-check")
+            const NumberCheck = document.querySelector("#number-check")
+            const SymbolCheck = document.querySelector("#symbol-check")
+            const lengthLabel = document.querySelector("#password-length-text")
+
+            const slider = document.querySelector("#passwordLength")
+            const securityIndicatorBar = document.querySelector("#security-indicator-bar")
+
+            const renew = document.querySelector("#renew")
+            generatePassword(16)
+
+            
+            //adiciona string por soma de acordo com os checkbox, senha será sorteada por uma posição randomica dentro do chars que será recortado por substring e somado ao password que está sendo gerado
+           function generatePassword(length) {
+            let chars = "abcdefghjklmnpqrstuvwxyz" // string que funciona como um array para a selação dos caracteres
+            let password = ""
+
+            const uppercaseChars = "ABCDEFGHJKLMNPQRSTUVWXYZ"
+            const numbersChars = "123456789"
+            const symbolChars = "?@*#&()[]"
+
+            if(UppercaseCheck.checked==true){
+                chars +=uppercaseChars
+                
+                
+            }
+            if(NumberCheck.checked==true){
+                chars +=numbersChars
+            }
+
+            if(SymbolCheck.checked==true){
+                chars +=symbolChars
+            }
+            
+            
+            for(let i=0;i<length;i++){
+                const randomNumber=Math.floor(Math.random()*chars.length) // arredonda o numero randomico de acordo com a posição 1 ao length do chars
+                password += chars.substring(randomNumber,randomNumber+1) // recorta a posição sorteada
+                
+            }
+            
+           
+            passwordField.value=password
+            calculateQuality() //calculo de qualidade sempre que executar
+            calculteFontSize()
+           }
+
+           function calculateQuality(){
+            // 20% para critico //100% para safe
+
+            // usar pesos para os marcadores juntamente com o tamanho sendo 25 % para cada parâmetro
+            // 0.25 tamanho 0.15 Maiusculos 0.25 Numberos 0.35 simbolos
+
+            var percent = Math.round(((((slider.value) /64 )*100)*0.25))
+            if (UppercaseCheck.checked==true){
+                percent = percent + 15
+            }
+
+            if (NumberCheck.checked==true){
+                percent = percent + 25
+            }
+
+            if (SymbolCheck.checked==true){
+                percent = percent + 35
+            }
+            console.log(percent)
+            securityIndicatorBar.style.width= `${percent}%`
+
+            if (percent > 69){
+                securityIndicatorBar.classList.remove('critical')
+                securityIndicatorBar.classList.remove('warning')
+                securityIndicatorBar.classList.add('safe')
+            }else if (percent > 50){
+                securityIndicatorBar.classList.remove('critical')
+                securityIndicatorBar.classList.add('warning')
+                securityIndicatorBar.classList.remove('safe')
+            } else {
+                securityIndicatorBar.classList.add('critical')
+                securityIndicatorBar.classList.remove('warning')
+                securityIndicatorBar.classList.remove('safe')
+
+            }
+
+            if(percent>=100){
+                securityIndicatorBar.classList.add('completed')
+            }else{
+                securityIndicatorBar.classList.remove('completed')
+            }
+             
+           }
+           //adiciona classes de acordo com o tamanho do slider
+           function calculteFontSize(){
+                if (slider.value > 45){
+                    passwordField.classList.remove("font-sm")
+                    passwordField.classList.remove("font-xs")
+                    passwordField.classList.add("font-xxs")
+                }else if(slider.value > 32){
+                    passwordField.classList.remove("font-sm")
+                    passwordField.classList.add("font-xs")
+                    passwordField.classList.remove("font-xxs")
+                }else if (slider.value >22){
+                    passwordField.classList.add("font-sm")
+                    passwordField.classList.remove("font-xs")
+                    passwordField.classList.remove("font-xxs")
+                }else {
+                    passwordField.classList.remove("font-sm")
+                    passwordField.classList.remove("font-xs")
+                    passwordField.classList.remove("font-xxs")
+                }
+           }
+           //copy function
+           function copy(){
+            navigator.clipboard.writeText(passwordField.value) //copiar o valor 
+           }
+
+
+          //slider renew password
+           slider.addEventListener("input", function (){
+            generatePassword(slider.value)
+            lengthLabel.innerHTML=slider.value
+
+           })
+           //copy buttons
+           const copyButton = document.querySelector("#copy")
+           copyButton.addEventListener("click", function(){
+            copy()
+           })
+
+           const copyButton2 = document.querySelector("#copy2")
+           copyButton2.addEventListener("click", function(){
+            copy()
+           })
+
+           //checkbox number event click
+           NumberCheck.addEventListener("click",function () {
+            generatePassword(slider.value)
+            })
+            //checkbox symbol event click
+            SymbolCheck.addEventListener("click",function () {
+            generatePassword(slider.value)
+            })
+            //checkbox uppercase event click
+            UppercaseCheck.addEventListener("click",function () {
+            generatePassword(slider.value)
+            })
+            //refresh event click
+            renew.addEventListener("click",function () {
+            generatePassword(slider.value)
+            })
+           
+           
+           
+           
+
+           
+
+
+
+        </script>
+
+    </body>
+</html>
